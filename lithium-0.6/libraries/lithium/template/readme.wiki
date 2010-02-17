@@ -1,0 +1,56 @@
+#### Special syntax
+
+Views have a special syntax for outputting escaped text. The standard way to
+output escaped text in your views from Lithium is as follows: {{{
+<?=$variable;?>
+}}}
+
+This is where a lot of confusion comes in because it is commonly misunderstood
+that Lithium depends on `short_open_tags`, however, that's not the case. The
+contents of a view is processed through a [ stream](template/view/Stream) before
+it is included by PHP. See the PHP [ manual](http://www.php.net/streams) to learn
+more about streams.
+
+The stream wrapper reads the file and searches for anything that looks like
+`<?=...?>` and replaces it with `<?php echo $h(...); ?>`.
+
+The design decision behind using PHP's short echo syntax is because it's a
+familiar syntax and it helps developers focus more on what data _should not_ be
+escaped vs. what data _needs_ to be escaped.
+
+One special case situation to take _important_ note of, is the use of
+`<?=$this->foo()?>`. In this scenario, the code is translated to
+`<?php echo $this->foo(); ?>` rather than being filtered through `$h()` as with
+the former explanation. When direct access to a method or property on `$this` is
+contained in the shorthand syntax, it will be output as normal without being
+filtered. This is to make it easier to work with helpers that return markup.
+
+An example would be something like: {{{
+<?=$this->form->create();?>
+... my form here ...
+<?=$this->form->end();?>
+}}}
+
+**Note:** `$h()` is the HTML escape function used in views.
+
+**Note:** To output regular, unescaped text, use plain old `<?php echo ...; ?>`.
+
+**Other useful information:**
+
+- [Introduction to PHP streams](http://www.php.net/intro.stream)
+- [Stream examples](http://www.php.net/stream.examples)
+
+#### Using helpers
+
+Helpers are lazy-loaded by the current renderer. To use a helper, you can
+reference it by its name like this: {{{
+echo $this->html->link('Google', 'http://www.google.com');
+}}}
+
+In a template, `$this` refers to the `Renderer` object. By using `$this->html`
+for the first time, the renderer will create an instance of the helper and store
+it so that the next time the helper is invoked the renderer will not have to
+re-instanciate the helper.
+
+Using such an approach, helpers can easily be loaded as needed without any
+performance impact.

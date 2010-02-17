@@ -1,0 +1,17 @@
+html {
+	background: #fff;
+}
+body {
+	width: auto !important;
+	font-family: "Trebuchet MS", verdana, arial, helvetica;
+	font-size: 14px;
+	color: #515151;
+   	line-height: 17px;
+	background-color: #fff;
+}
+.navheader {
+	background: none;
+}
+div.section > pre.programlisting {
+	overflow: auto;
+}

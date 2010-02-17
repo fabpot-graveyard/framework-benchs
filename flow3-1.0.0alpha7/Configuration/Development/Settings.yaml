@@ -1,0 +1,31 @@
+#                                                                        #
+# Configuration for the FLOW3 Framework                                  #
+#                                                                        #
+# This file contains additions to the base configuration for the FLOW3   #
+# Framework. Just add your own modifications as necessary.               #
+#                                                                        #
+# Please refer to the default configuration file or the FLOW3 manual for #
+# possible configuration options.                                        #
+#                                                                        #
+
+FLOW3:
+  error:
+    exceptionHandler:
+      className: 'F3\FLOW3\Error\DebugExceptionHandler'
+    errorHandler:
+      exceptionalErrors: [%E_USER_ERROR%, %E_RECOVERABLE_ERROR%, %E_WARNING%, %E_NOTICE%, %E_USER_WARNING%, %E_USER_NOTICE%, %E_STRICT%]
+
+  monitor:
+    fileMonitor:
+      enable: y
+
+  resource:
+    publishing:
+      detectPackageResourceChanges: y
+
+  reflection:
+    detectClassChanges: y
+
+  log:
+    systemLogger:
+      backendOptions: { logFileURL: %FLOW3_PATH_DATA%Logs/%FLOW3_SAPITYPE%/FLOW3_Development.log, createParentDirectories: y, severityThreshold: %LOG_DEBUG% }

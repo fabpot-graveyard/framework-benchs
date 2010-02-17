@@ -1,0 +1,15 @@
+#                                                                        #
+# Caches configuration                                                   #
+#                                                                        #
+# This file contains a list of caches which are automatically registered #
+# while initializing the cache framework. If caches want to benefit from #
+# the automatic flushing mechanisms (such as garbage collection and      #
+# automatic flushing by tag) they must be registered in a Caches.yaml    #
+# file.
+#                                                                        #
+
+Default:
+  frontend: F3\FLOW3\Cache\Frontend\VariableFrontend
+  backend: F3\FLOW3\Cache\Backend\NullBackend
+  backendOptions:
+    defaultLifetime: 0

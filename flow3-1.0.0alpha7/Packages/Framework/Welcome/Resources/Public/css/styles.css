@@ -1,0 +1,245 @@
+html {
+	width: 100%;
+	height: 100%;
+}
+body {
+	font-family: "Trebuchet MS", verdana, arial, helvetica;
+	font-size: 14px;
+	color: #515151;
+   	line-height: 17px;
+	background-color: #515151;
+	background-image: url('../images/application-bar-bg.gif');
+	background-position: top left;
+	background-repeat: repeat-x;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+a,
+a:visited,
+a:link {
+	color: #700016;
+	text-decoration: none;
+}
+a:hover,
+a:active,
+a:focus {
+	color: #E56508;
+	text-decoration: underline;
+}
+a.active {
+	color: #99011E;
+	text-decoration: none;
+}
+ul,
+ul li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+h1, h2, h3, h4 {
+	font-size: 14px;
+	line-height: 17px;
+	margin: 0;
+	padding: 0;
+}
+.invisible {
+	display: none;
+}
+#application-bar {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 6%;
+	color: #a0a0a0;
+	font-size: 18px;
+	line-height: 34px;
+}
+#application-bar h1 {
+	font-size: 18px;
+	line-height: 34px;
+}
+#application-bar .logo {
+	text-indent: -999px;
+	width: 67px;
+	height: 21px;
+	float: left;
+	background: url('../images/flow3-logo-white-on-dark.gif') no-repeat;
+	margin: 3px 15px 0 15px;
+}
+#application-bar .version {
+	position: absolute;
+	right: 10px;
+	top: 0px;
+	color: #4d4d4d;
+	font-size: 12px;
+}
+#messages {
+	position: relative;
+	background: #efefef;
+	width: 800px;
+	margin: 10% auto 10px auto;
+}
+#messages .notice {
+	border: 1px solid #ffeda6;
+	background: #ffeda6 url('../images/messages-notice-bg.png') repeat-x;
+}
+#messages .notice h2 {
+	background: url('../images/messages-notice-icon.png') no-repeat 7px 9px;
+	padding: 10px 0 0 30px;
+}
+#messages .notice p {
+	margin: 0;
+	padding: 10px 30px 10px 30px;
+	font-size: 12px;
+}
+#window {
+	position: relative;
+	background: #efefef;
+	width: 800px;
+	margin: 0% auto 0 auto;
+}
+#window .tabs .tab-inactive .content {
+	display: none;
+}
+#window .tabs .tab-inactive h2.title {
+	cursor: pointer;
+} 
+#window .tabs .tab-active h2.title {
+	padding: 0;
+	margin: 0;
+}
+#window .tabs .tab-active .content {
+	background: #fff url('../images/tab-content-bg.gif') repeat-x;
+	padding: 50px 20px 0 20px;
+	border: 1px solid #fff;
+}
+#window .tabs .tab-active .title-getting-started,
+#window .tabs .tab-inactive .title-getting-started,
+#window .tabs .tab-active .title-tutorial,
+#window .tabs .tab-inactive .title-tutorial,
+#window .tabs .tab-active .title-about,
+#window .tabs .tab-inactive .title-about {
+	position: absolute;
+	z-index: 100;
+	top: -4px;
+	left: 0px;
+	width: 210px;
+	height: 36px;
+	text-indent: -9999px;
+}
+#window .tabs .tab-active .title-getting-started {
+	background: url('../images/tabs-title-getting-started-active.png') no-repeat;
+}
+#window .tabs .tab-inactive .title-getting-started {
+	background: url('../images/tabs-title-getting-started.png') no-repeat;
+}
+#window .tabs .tab-active .title-tutorial,
+#window .tabs .tab-inactive .title-tutorial {
+	z-index: 90;
+	left: 150px;
+	width: 250px;
+}
+#window .tabs .tab-active .title-tutorial {
+	background: url('../images/tabs-title-tutorial-active.png') no-repeat;
+}
+#window .tabs .tab-inactive .title-tutorial {
+	background: url('../images/tabs-title-tutorial.png') no-repeat;
+}
+#window .tabs .tab-active .title-about,
+#window .tabs .tab-inactive .title-about {
+	z-index: 80;
+/*	left: 340px;*/
+	left: 150px;
+	width: 250px;
+}
+#window .tabs .tab-active .title-about {
+	background: url('../images/tabs-title-about-active.png') no-repeat;
+}
+#window .tabs .tab-inactive .title-about {
+	background: url('../images/tabs-title-about.png') no-repeat;
+}
+
+#window .tabs .tab-active .content .main {
+	background: #fff;
+	width: 576px;
+	padding: 10px 0 0 0;
+}
+#window .tabs .tab-active .content .main .spacer {
+	margin: 0 10px;
+}
+#window .tabs .tab-active .content .main p {
+	margin: 0;
+	padding: 0 0 10px 0;
+}
+#window .tabs .tab-active .content .sidebar {
+	position: absolute;
+	left: 610px;
+	top: 56px;
+	background: transparent;
+	width: 200px;
+	padding: 0;
+}
+#window .tabs .content .main ol.steps li code {
+	font-family: Monaco, "Courier New", monospace;
+	font-size: 13px;
+	color: #000;
+	background: #f7f7f7;
+	padding: 2px;
+}
+#window .tabs .content .main ol.steps {
+	padding: 0 0 0 40px;
+	-webkit-padding-start: 53px;
+	margin: 10px 0;
+}
+#window .tabs .content .main ol.steps li {
+	color: #cbcbcb;
+	font-size: 35px;
+	list-style-type: decimal;
+	padding: 0 0 10px 0;
+	margin: 0;
+}
+#window .tabs .content .main ol.steps li p {
+	color: #515151;
+	font-size: 14px;
+	-webkit-margin-start: -15px;
+}
+#window .tabs .content .main ol.steps li h3 {
+	color: #515151;
+	font-size: 18px;
+	margin: 0 0 10px 0;
+	-webkit-margin-start: -15px;
+}
+#window .tabs .content .sidebar h3 {
+	margin: 0 0 10px 0;
+}
+#window .tabs .content .sidebar ul {
+	margin: 0 0 10px 0;
+}
+#window .tabs .content .sidebar ul li {
+	margin: 0 0 5px 0;
+}
+#window .tabs .content .main h3 {
+	margin: 10px 0 10px 0;
+	font-size: 18px;
+}
+#window .tabs .content .main h3.first {
+	margin: 0px 0 10px 0;
+}
+#window .tabs .content .main ul.packages {
+	padding: 0 0 10px 10px;
+}
+#window .tabs .content .main ul.packages li.package {
+	border-bottom: 1px dotted #ccc;
+	padding: 15px 0 0 0;
+}
+#window .tabs .content .main ul.packages h4 {
+	padding: 0 0 5px 0;
+}
+#window .tabs .content .main ul.packages h4 small {
+	color: #CBCBCB;
+}
+#window .tabs .content .main ul.packages p {
+	padding: 0 0 10px 0;
+}

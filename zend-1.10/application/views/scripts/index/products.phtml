@@ -1,0 +1,25 @@
+<ul>
+  <?php foreach ($this->products as $product): ?>
+    <li>
+      <?php echo $this->render('index/product.phtml') ?>
+    </li>
+  <?php endforeach; ?>
+</ul>
+
+<ul>
+  <li><a href="<?php echo $this->url(array('slug' => 1), 'route_1')  ?>">Menu 1</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 2), 'route_2')  ?>">Menu 2</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 3), 'route_3')  ?>">Menu 3</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 4), 'route_4')  ?>">Menu 4</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 5), 'route_5')  ?>">Menu 5</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 6), 'route_6')  ?>">Menu 6</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 7), 'route_7')  ?>">Menu 7</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 8), 'route_8')  ?>">Menu 8</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 9), 'route_9')  ?>">Menu 9</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 10), 'route_10')  ?>">Menu 10</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 11), 'route_11')  ?>">Menu 11</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 12), 'route_12')  ?>">Menu 12</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 13), 'route_13')  ?>">Menu 13</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 14), 'route_14')  ?>">Menu 14</a></li>
+  <li><a href="<?php echo $this->url(array('slug' => 15), 'route_15')  ?>">Menu 15</a></li>
+</ul>

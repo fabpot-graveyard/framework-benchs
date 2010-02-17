@@ -1,0 +1,35 @@
+#                                                                        #
+# Default routes configuration for the Welcome package                   #
+#                                                                        #
+
+# $Id: Routes.yaml 2179 2009-04-24 12:28:32Z k-fish $
+
+-
+  name: 'documentation file forward'
+  uriPattern: 'documentation/{packageKey}/{documentationName}/{language}/{file}'
+  routeParts:
+    file:
+      handler: F3\DocumentationBrowser\RoutePartHandlers\FileRoutePartHandler
+  defaults:
+    '@package':    'DocumentationBrowser'
+    '@controller': 'Standard'
+    '@action':     'view'
+    '@format':     'html'
+
+-
+  name: 'selected documentation'
+  uriPattern: 'documentation/{packageKey}/{documentationName}/{language}'
+  defaults:
+    '@package':    'DocumentationBrowser'
+    '@controller': 'Standard'
+    '@action':     'index'
+    '@format':     'html'
+
+-
+  name: 'documentation standard controller'
+  uriPattern: 'documentation(/{@action})'
+  defaults:
+    '@package':    'DocumentationBrowser'
+    '@controller': 'Standard'
+    '@action':     'index'
+    '@format':     'html'

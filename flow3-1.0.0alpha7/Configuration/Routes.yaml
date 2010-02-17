@@ -1,0 +1,205 @@
+#                                                                        #
+# Routes configuration                                                   #
+#                                                                        #
+# This file contains the configuration for the MVC router.               #
+# Just add your own modifications as necessary.                          #
+#                                                                        #
+# Please refer to the FLOW3 manual for possible configuration options.   #
+#                                                                        #
+
+# $Id: Routes.yaml 3637 2010-01-15 09:37:44Z k-fish $
+
+-
+  name: 'Hello'
+  uriPattern: 'hello/{name}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'index'
+
+-
+  name: 'Products'
+  uriPattern: 'products'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'products'
+
+-
+  name: 'Product'
+  uriPattern: 'product/{id}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'product'
+
+#
+-
+  name: 'route_1'
+  uriPattern: 'route1/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_1'
+
+#
+-
+  name: 'route_2'
+  uriPattern: 'route2/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_2'
+#
+-
+  name: 'route_3'
+  uriPattern: 'route3/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_3'
+#
+-
+  name: 'route_4'
+  uriPattern: 'route4/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_4'
+#
+-
+  name: 'route_5'
+  uriPattern: 'route5/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_5'
+#
+-
+  name: 'route_6'
+  uriPattern: 'route6/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_6'
+#
+-
+  name: 'route_7'
+  uriPattern: 'route7/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_7'
+#
+-
+  name: 'route_8'
+  uriPattern: 'route8/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_8'
+#
+-
+  name: 'route_9'
+  uriPattern: 'route9/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_9'
+#
+-
+  name: 'route_10'
+  uriPattern: 'route10/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_10'
+#
+-
+  name: 'route_11'
+  uriPattern: 'route11/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_11'
+#
+-
+  name: 'route_12'
+  uriPattern: 'route12/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_12'
+#
+-
+  name: 'route_13'
+  uriPattern: 'route13/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_13'
+#
+-
+  name: 'route_14'
+  uriPattern: 'route14/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_14'
+#
+-
+  name: 'route_15'
+  uriPattern: 'route15/{slug}'
+  defaults:
+    '@package':    'Hello'
+    '@controller': 'Standard'
+    '@action':     'route_15'
+
+
+##
+# TYPO3CR subroutes
+
+-
+  name: 'TYPO3CR'
+  uriPattern: 'typo3cr<TYPO3CRSubroutes>'
+  defaults:
+    '@format': 'html'
+  subRoutes:
+    TYPO3CRSubroutes:
+      package: TYPO3CR
+
+##
+# Subroutes from the Welcome package.
+#
+# If the package "Welcome" is installed, its fallback route will point to an 
+# informative welcome screen.
+
+-
+  name: 'Welcome'
+  uriPattern: '<WelcomeSubroutes>'
+  subRoutes:
+    WelcomeSubroutes:
+      package: Welcome
+
+##
+# Subroutes from the DocumentationBrowser package.
+#
+
+-
+  name: 'Documentation Browser'
+  uriPattern: '<DocumentationBrowserSubroutes>'
+  subRoutes:
+    DocumentationBrowserSubroutes:
+      package: DocumentationBrowser
+
+##
+# FLOW3 subroutes
+
+-
+  name: 'FLOW3'
+  uriPattern: '<FLOW3Subroutes>'
+  defaults:
+    '@format': 'html'
+  subRoutes:
+    FLOW3Subroutes:
+      package: FLOW3

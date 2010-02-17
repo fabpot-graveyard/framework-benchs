@@ -1,0 +1,97 @@
+Nowe funkcjonalności
+============
+
+Ta strona zawiera streszczenie najważniejszych nowych funkcji wprowadzonych w każdym wydaniu Yii. 
+
+Wersja 1.1.0
+-------------
+
+ * [Dodano wsparcie dla pisana testów jednostkowych i funkcjonalnych](/doc/guide/test.overview)
+
+ * [Dodano wsparcie dla używania skórek w widżetach](/doc/guide/topics.theming#skin)
+
+ * Ulepszono sposób deklarowania bezpiecznych atrybutów modelu. Zobacz
+ [zabezpieczanie przypisywania atrybutów](/doc/guide/form.model#securing-attribute-assignments).
+
+ * Zmieniono domyślny algorytm gorliwego ładowania dla zapytań dla relacyjnych rekordów aktywnych, 
+ tak że wszystkie tabele są łączone w jednym zapytaniu SQL.
+
+ * Zmieniono domyślny alias tabeli, tak aby wskazywał na nazwę relacji rekordu aktywnego.
+
+ * [Dodano wsparcie dla prefiksów tabel](/doc/guide/database.dao#using-table-prefix).
+
+
+Wersja 1.0.11
+--------------
+
+ * Dodano wsparcie dla parsowania i tworzenia adresów URL z użyciem sparametryzowanych nazw hostów
+     - [Parametryzowanie nazw hostów](/doc/guide/topics.url#parameterizing-hostnames)
+
+
+Wersja 1.0.10
+--------------
+
+ * Rozszerzono zarządzanie modułami wiadomości o obsługę CPhpMessageSource 
+     - [Tłumaczenia wiadomości](/doc/guide/topics.i18n#message-translation)
+
+ * Dodano wsparcie dla dołączania anonimowych funkcji jako uchwyty zdarzeń
+     - [Zdarzenia komponentów](/doc/guide/basics.component#component-event)
+
+Wersja 1.0.8
+-------------
+
+ * Dodano wsparcie dla pobierania wartości wielokrotnie buforowanych w jendym czasie
+   - [Buforowanie danych](/doc/guide/caching.data)
+
+ * Wprowadzono nowy, domyślny alias dla ścieżki głównej `ext`, który wskazuje na katalog zawierający wszystkie 
+ rozszerzenia stron trzecich.
+   - [Używanie rozszerzeń](/doc/guide/extension.use)
+
+
+Wersja 1.0.7
+-------------
+
+ * Dodano wsparcie dla wyświetlania informacji ze stosu wywołań w śledzeniu komunikatów
+     - [Logowanie informacji kontekstowych](/doc/guide/topics.logging#logging-context-information)
+
+ * Dodano opcję `index` do relacji AR,  tak, że zależne obiekty mogą być indeksowane przy użyciu wartości ze określonej kolumny 
+     - [Opcje zapytań relacyjnych](/doc/guide/database.arr#relational-query-options)
+
+
+Wersja 1.0.6
+-------------
+
+ * Dodano wsparcie dla użycia nazwanych zakresów wraz z metodami `update` oraz `delete`:
+     - [Nazwane podzbiory](/doc/guide/database.ar#named-scopes)
+
+ * Dodano wsparcie dla użycia nazwanych zakresów dla opcji `with` reguł relacyjnych:
+     - [Relacyjne zapytania z nazwanymi zakresami](/doc/guide/database.arr#relational-query-with-named-scopes)
+
+ * Dodano wsparcie do profilowania wywołań SQL
+     - [Profilowanie wywołań SQL](/doc/guide/topics.logging#profiling-sql-executions)
+     
+ * Dodano wsparcie dla logowania dodatkowych informacji kontekstowych
+     - [Logowanie informacji kontekstowych](/doc/guide/topics.logging#logging-context-information)
+
+ * Dodano wsparcie dla personalizacji pojedynczej reguły URL poprzez możliwość ustawiania jej opcji its urlFormat oraz caseSensitive:
+     - [Przyjazne użytkownikowi adresy URL](/doc/guide/topics.url#user-friendly-urls)
+
+ * Dodano wsparcie dla używania akcji kontrolera do wyświetlania błędów aplikacji:
+     - [Obsługa błędów przy użyciu akcji](/doc/guide/topics.error#handling-errors-using-an-action)
+
+
+Wersja 1.0.5
+-------------
+
+ * Rozszerzono rekord aktywny o wsparcie dla nazwanych podzbiorów. Zobacz:
+     - [nazwane podzbiory](/doc/guide/database.ar#named-scopes)
+     - [domyślne nazwane podzbiory](/doc/guide/database.ar#default-named-scope)     
+     - [relacyjne zapytania z nazwanymi podzbiorami](/doc/guide/database.arr#relational-query-with-named-scopes)
+
+ * Rozszerzono record aktywny o wsparcie opcji dynamicznych zapytań dla leniwego ładowania. Zobacz:
+     - [dynamiczne opcje zapytań relacyjnych](/doc/guide/database.arr#dynamic-relational-query-options)
+
+ * Rozszerzono[CUrlManager] o wsparcie dla parametryzacji reguł dla części URL zawierającej trasę. Zobacz:
+     - [Parametryzacja trasy w regułach URL](/doc/guide/topics.url#parameterizing-routes)
+
+<div class="revision">$Id: changes.txt 1533 2009-11-20 14:10:46Z qiang.xue $</div>

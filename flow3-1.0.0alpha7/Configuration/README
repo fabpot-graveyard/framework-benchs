@@ -1,0 +1,30 @@
+=============================================================================
+FLOW3 Configuration Directory
+=============================================================================
+
+This directory contains the configuration for the FLOW3 framework and the
+application based on it.The configuration files only contain additions and
+modifications of the original configuration and therefore don't contain all
+possible configuration options.
+
+The following files play a role in the configuration system:
+
+   FLOW3.yaml       Contains important base options which are needed by the
+                    FLOW3 framework at startup time.
+
+   Packages.yaml    May contain additional configuration options (typically
+                    class loaders etc.) which become active during package
+                    initialization.
+
+   Objects.yaml     Additional objects configuration, overriding the
+                    configuration which was defined in the various packages.
+
+   Routes.yaml      Provides the routing configuration for the MVC framework.
+
+   Settings.yaml    Various application-level settings can be set in this file.
+
+All of these files become active in any application context if they reside
+in the main Configuration directory (the same directory where this README is
+located). However, context-specific configuration may be defined in sub directories
+which carry the same name as the application context. These configuration
+files are loaded after the default and global configuration has been invoked.

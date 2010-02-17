@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<package xmlns="http://typo3.org/ns/2008/flow3/package">
+    <key>Testing</key>
+    <title>The FLOW3 unit testing package</title>
+    <description>Contains web and CLI test runners plus some magic to easy unit testing of FLOW3 code.</description>
+    <version>0.5.0-alpha8</version>
+    <categories/>
+    <parties/>
+    <constraints>
+        <depends>
+            <package>PHPUnit</package>
+        </depends>
+        <conflicts/>
+        <suggests>
+            <package>TestPackage</package>
+        </suggests>
+    </constraints>
+</package>

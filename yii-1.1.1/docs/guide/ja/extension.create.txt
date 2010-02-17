@@ -1,0 +1,185 @@
+エクステンションの作成
+===================
+
+エクステンションは第三者の開発者によって使われるはずのものなので、作るためにはさらにいくらかの努力を必要とします。
+次に示すのは一般的なガイドラインです。
+
+* エクステンションは自己充足的でなければなりません。つまり外部の依存は最小限でなければなりません。
+  エクステンションがさらなるパッケージ、クラスまたはリソースファイルのインストールを必要とするならば、
+  それはユーザの頭痛となるでしょう。
+* エクステンションに属しているファイルは、エクステンション名を名前とする同じディレクトリの下で組織される必要があります。
+* エクステンションのクラスは、他のエクステンションのクラスとの競合を避けるために、何文字かの識別子を名前の前に置かれなければなりません。
+* エクステンションは、コードと合せて詳細なインストールとAPIドキュメンテーションが必要です。
+  これにより、エクステンションが使われる際に他の開発者に必要な時間と努力を減らします。
+* エクステンションは、適当なライセンスを持っていなければなりません。
+オープンソースとクローズドソースプロジェクトの両方にエクステンションを使って貰いたければ
+BSD、MIT、その他のようなライセンスを考慮したほうが良いでしょう。GPLではありません。
+なぜならGPLはその派生コードに同様にオープンソースであることを要求するためです。
+
+以下に、[概要](/doc/guide/extension.overview)で解説される分類により、新しいエクステンションを作成する方法を解説します。
+主に自身のプロジェクトで使われるコンポーネントを作成するときも、これらの説明があてはまります。
+
+アプリケーションコンポーネント
+---------------------
+
+[アプリケーションコンポーネント](/doc/guide/basics.application#application-component)
+は[IApplicationComponent]インタフェースを実装するかまたは[CApplicationComponent]の継承です。
+メインのメソッドでは[IApplicationComponent::init]を実装する必要があり、そこでコンポーネントの初期化処理を行います。
+このメソッドはコンポーネントが生成された後で起動され、[アプリケーション構成](/doc/guide/basics.application#application-configuration)
+で規定される初期値が適用されます。
+
+デフォルトではリクエスト処理中に最初にアクセスされるときに生成され、初期化されます。
+もしアプリケーションインスタンスが生成された直後にアプリケーションコンポーネントが生成される必要があるならば、
+ユーザはそのIDを[CApplication::preload]プロパティに記述しておかなければなりません。
+
+ウィジェット
+------
+
+[ウィジェット](/doc/guide/basics.view#widget)は[CWidget]またはその子クラスの継承です。
+新しいウィジェットを作成する最も簡単な方法は、既存のウィジェットを継承し、そのメソッドをオーバライドするか、またはそのデフォルトプロパティ値を変更することです。
+たとえば、より素晴らしいCSSスタイルを［CTabView］に適用したいなら、ウィジェットを使用する際にその[CTabView::cssFile]プロパティを構成することができます。
+以下のように[CTabView]を継承することで、ウィジェットを使うときもはやプロパティを構成しないようにすることも可能です。
+
+~~~
+[php]
+class MyTabView extends CTabView
+{
+	public function init()
+	{
+		if($this->cssFile===null)
+		{
+			$file=dirname(__FILE__).DIRECTORY_SEPARATOR.'tabview.css';
+			$this->cssFile=Yii::app()->getAssetManager()->publish($file);
+		}
+		parent::init();
+	}
+}
+~~~
+
+上記において、プロパティがセットされてなければ、[CWidget:init]メソッドをオーバライドし、新しいデフォルトCSSスタイルをURL[CTabView:cssFile]に割り当てます。
+拡張としてまとめられるように、`MyTabView`クラスファイルを含む同じディレクトリの下に新しいCSSスタイルファイルを置きました。
+CSSスタイルファイルはWebアクセスできないので、アセットとして公開する必要があります。
+
+ゼロから新しいウィジェットを作製するために、主に[CWidget::init]と[CWidget::run]の2つのメソッドを実装する必要があります。
+ウィジェットをビューに挿入するために`$this->beginWidget`を使うとき、最初のメソッドが呼ばれます。
+最後に`$this->endWidget`を呼ぶとき、第2のメソッドが呼ばれます。
+これらの2つのメソッドの間で表示される内容を捕えて処理したい場合には、[CWidget::init]の中で[出力バッファリング](http://us3.php.net/manual/en/book.outcontrol.php)を用います。
+さらに[CWidget::run]の中でバッファされた出力を取り出し処理を行います。
+
+ウィジェットは、しばしば、CSS、JavaScriptまたは他のリソースファイルをウィジェットを使うページに含むことが必要です。
+彼らがウィジェットクラスファイルと共にいて、通常ウェブユーザーによってアクセスできないので、これらのファイルは*アセット*と呼ばれます。
+これらのファイルにウェブアクセスできるようにするため、上記のコード断片で示すように、[WebApplication::assetManager]を用いて公開する必要があります。
+この他、CSSまたはJavaScriptファイルを現在のページに含めたいならば、[CClientScript]を用いてそれを登録する必要があります。
+
+~~~
+[php]
+class MyWidget extends CWidget
+{
+	protected function registerClientScript()
+	{
+		// ...CSS又はJavaScriptファイルをここで公開...
+		$cs=Yii::app()->clientScript;
+		$cs->registerCssFile($cssFile);
+		$cs->registerScriptFile($jsFile);
+	}
+}
+~~~
+
+ウィジェットは、それ自身のビューファイルも備えているかもしれません。
+もしそうならば、ウィジェットクラスファイルを含んでいるディレクトリの下に`views`という名のディレクトリをつくり、すべてのビューファイルをそこに置いてください。
+ウィジェットクラスでは、ウィジェットの表示を行うために`$this->render('ViewName')`を用いてください。
+そしてそれはコントローラで行う方法と似ています。
+
+アクション
+------
+
+[アクション](/doc/guide/basics.controller#action)は[CAction]またはその子クラスから継承されるべきです。
+アクションとして主に実装されるべきメソッドは[IAction::run]です。
+
+フィルタ
+------
+[フィルタ](/doc/guide/basics.controller#filter)は[CFilter]またはその子クラスから継承されるべきです。
+フィルタとして主に実装されるべきメソッドは[CFilter::preFilter]と[CFilter::postFilter]です。
+前者はアクションが実行される前に呼び出され、後者はアクションの実行後に呼び出されます。
+
+~~~
+[php]
+class MyFilter extends CFilter
+{
+	protected function preFilter($filterChain)
+	{
+		// アクションが実行される前に行われるロジック
+		return true; // アクションが実行されるべきでない場合は偽
+	}
+
+	protected function postFilter($filterChain)
+	{
+		// アクションが実行された後に行われるロジック
+	}
+}
+~~~
+
+`$filterChain`パラメータは[CFilterChain]タイプで、現在フィルタされているアクションの情報を含みます。
+
+
+コントローラ
+----------
+イクステンションとして配布される[コントローラ](/doc/guide/basics.controller)は
+ [CController]の継承ではなく[CExtController]を継承するべきです。
+主な理由は、[CController]はビューファイルが`application.views.ControllerID`の下に存在するのに対し、[CExtController]はビューファイルが、コントローラクラスファイルを含むディレクトリのサブディレクトリである`views`ディレクトリに存在すると仮定するからです。
+したがって、そのビューファイルがコントローラクラスファイルと共に存在するため、コントローラを再配布することはより簡単です。
+
+
+バリデータ
+---------
+バリデータは[CValidator]を継承し、[CValidator::validateAttribute]メソッドを実装するべきです。
+
+~~~
+[php]
+class MyValidator extends CValidator
+{
+	protected function validateAttribute($model,$attribute)
+	{
+		$value=$model->$attribute;
+		if($value has error)
+			$model->addError($attribute,$errorMessage);
+	}
+}
+~~~
+
+コンソールコマンド
+---------------
+[コンソールコマンド](/doc/guide/topics.console)は[CConsoleCommand]を継承し、
+[CConsoleCommand::run]メソッドを実装するべきです。
+付加的に、[CConsoleCommand::getHelp]をオーバライドし、コマンドの素敵なヘルプ情報を表示することも可能です。
+
+~~~
+[php]
+class MyCommand extends CConsoleCommand
+{
+	public function run($args)
+	{
+		// $argsは、このコマンドに対するコマンドラインの引数の配列です
+	}
+
+	public function getHelp()
+	{
+		return '使用法: このコマンドの使いかた';
+	}
+}
+~~~
+
+モジュール
+------
+モジュールの作成する方法については[モジュール](/doc/guide/basics.module#creating-module)に関する章を参照してください。
+
+モジュール開発の一般的なガイドラインは、自分自身を含むことです。
+モジュールによって使用されるリソースファイル(例えばCSS, JavaScript, 画像)はモジュールと共に配布されるべきです。
+そしてモジュールはそれらのファイルがWebからアクセス可能なように公開されるべきです。
+
+生成コンポーネント
+-----------------
+生成コンポーネントエクステンションの開発はクラスを書くことに似ています。
+再び、コンポーネントは自分自身を含むべきです。理由は他の開発者が容易に使用できるためです。
+
+<div class="revision">$Id: extension.create.txt 749 2009-02-26 02:11:31Z qiang.xue $</div>

@@ -1,0 +1,164 @@
+应用
+====
+
+应用是指执行用户的访问指令。其主要任务是解析用户指令，并将其分配给相应的控制器以进行进一步的处理。
+应用同时也是一个存储参数的地方。因为这个原因，应用一般被称为“前端控制器”。
+
+
+[入口脚本](/doc/guide/basics.entry)将应用创建为一个单例.
+应用单例可以在任何位置通过 [Yii::app()|YiiBase::app] 来访问.
+
+
+应用配置
+--------
+
+默认情况下, 应用是 [CWebApplication] 类的一个实例. 要对其进行定制, 
+通常是在应用实例被创建的时候提供一个配置文件 (或数组) 来初始化其属性值.
+另一个定制应用的方法就是扩展 [CWebApplication] 类.
+
+配置是一个键值对的数组. 每个键名都对应应用实例的一个属性, 相应的值为属性的初始值.
+举例来说, 下面的代码设定了应用的 [名称|CApplication::name] 和 
+[默认控制器|CWebApplication::defaultController] 属性.
+
+~~~
+[php]
+array(
+	'name'=>'Yii Framework',
+	'defaultController'=>'site',
+)
+~~~
+我们一般将配置保存在一个单独的PHP代码里(e.g.
+`protected/config/main.php`). 在这个代码里，我们返回以下参数数组，
+~~~
+[php]
+return array(...);
+~~~
+
+为执行这些配置，我们一般将这个文件作为一个配置，传递给应用的构造器。或者象下述例子这样传递给[Yii::createWebApplication()]
+我们一般在 [entry script](/doc/guide/basics.entry)里界定这些配置:
+
+~~~
+[php]
+$app=Yii::createWebApplication($configFile);
+~~~
+
+> Tip|提示: 如果应用配置非常复杂，我们可以将这分成几个文件，每个文件返回一部分配置参数。接下来，我们在主配置文件里用PHP `include()` 把其它
+配置文件合并成一个配置数组。
+
+应用的主目录
+--------------------------
+
+应用的主目录是指包含所有安全系数比较高的PHP代码和数据的根目录。
+在默认情况下，这个目录一般是入口代码所在目录的一个目录： `protected` 。
+这个路径可以通过在[application configuration](#application-configuration)里设置
+[basePath|CWebApplication::basePath]来改变.
+
+普通用户不应该能够访问应用文件夹里的内容。在 [Apache HTTP
+服务器](http://httpd.apache.org/)里, 我们可以在这个文件夹里放一个
+`.htaccess` 文件. `.htaccess`的文件内容是这样的：
+
+~~~
+deny from all
+~~~
+
+应用元件
+----------
+
+我们可以很容易的通过元件(component)设置和丰富一个应用(Application)的功能。一个应用可以有很多应用元件，
+每个元件都执行一些特定的功能。比如说，一个应用可能通过[CUrlManager]
+和 [CHttpRequest]部件来解析用户的访问。
+
+通过配置 [components|CApplication::components] property of
+application, 我们可以个性化一些元件的类及其参数。比如说，我们可以
+配置[CMemCache] 元件以便用服务器的内存当缓存。,
+
+~~~
+[php]
+array(
+	......
+	'components'=>array(
+		......
+		'cache'=>array(
+			'class'=>'CMemCache',
+			'servers'=>array(
+				array('host'=>'server1', 'port'=>11211, 'weight'=>60),
+				array('host'=>'server2', 'port'=>11211, 'weight'=>40),
+			),
+		),
+	),
+)
+~~~
+
+在上述例子中，我们将`(缓存)cache`元素(element)加在 `元件` 数组里. 这个
+`缓存（cache）` 告诉我们这个元件的类是`CMemCache` 其服务 `服务器(servers)` 属性应该这样初始化。
+
+要调用这个元件，用这个命令：`Yii::app()->ComponentID`，其中`ComponentID`是指这个元件的ID。 (比如 `Yii::app()->cache`).
+
+我们可以在应用配置里，将`enabled`改为false来关闭一个元件。当我们访问一个被禁止的元件时，系统会返回一个NULL值。
+
+> Tip|提示: 默认情况下，应用元件是根据需要而创建的。这意味着一个元件只有在被访问的情况下才会创建。
+因此，系统的整体性能不会因为配置了很多元件而下降。有些应用元件，(比如[CLogRouter]) 是不管用不用都要创建的。在这种情况下，
+我们在应用的配置文件里将这些元件的ID列上：[preload|CApplication::preload]。
+
+应用的核心元件
+--------------
+
+Yii预先定义了一套核心应用组件提供Web应用程序的常见功能。例如，[request|CWebApplication::request]元件用于解析用户请求和提供信息，如网址，cookie。在几乎每一个方面，通过配置这些核心元件的属性，我们都可以更改Yii的默认行为。
+
+下面我们列出[CWebApplication]预先声明的核心元件。
+
+   - [assetManager|CWebApplication::assetManager]: [CAssetManager] -管理发布私有asset文件。
+
+   - [authManager|CWebApplication::authManager]: [CAuthManager] - 管理基于角色控制 (RBAC)。
+
+   - [cache|CApplication::cache]: [CCache] - 提供数据缓存功能。请注意，您必须指定实际的类（例如[CMemCache], [CDbCache] ） 。否则，将返回空当访问此元件。
+
+   - [clientScript|CWebApplication::clientScript]: [CClientScript] -管理客户端脚本(javascripts and CSS)。
+
+   - [coreMessages|CApplication::coreMessages]: [CPhpMessageSource] -提供翻译Yii框架使用的核心消息。
+
+   - [db|CApplication::db]: [CDbConnection] - 提供数据库连接。请注意，你必须配置它的[connectionString|CDbConnection::connectionString]属性才能使用此元件。
+
+   - [errorHandler|CApplication::errorHandler]: [CErrorHandler] - 处理没有捕获的PHP错误和例外。
+
+   - [messages|CApplication::messages]: [CPhpMessageSource] - 提供翻译Yii应用程序使用的消息。
+
+   - [request|CWebApplication::request]: [CHttpRequest] - 提供和用户请求相关的信息。
+
+   - [securityManager|CApplication::securityManager]: [CSecurityManager] -提供安全相关的服务，例如散列（hashing）, 加密（encryption）。
+
+   - [session|CWebApplication::session]: [CHttpSession] - 提供会话（session）相关功能。
+
+   - [statePersister|CApplication::statePersister]: [CStatePersister] -提供全局持久方法（global state persistence method）。
+
+   - [urlManager|CWebApplication::urlManager]: [CUrlManager] - 提供网址解析和某些函数。
+
+   - [user|CWebApplication::user]: [CWebUser] - 代表当前用户的身份信息。
+
+   - [themeManager|CWebApplication::themeManager]: [CThemeManager] - 管理主题（themes）。
+
+
+应用的生命周期
+--------------
+
+当处理一个用户请求时，一个应用程序将经历如下生命周期：
+
+   1. 建立类自动加载器和错误处理；
+
+   2. 注册核心应用组件；
+
+   3. 读取应用配置；
+
+   4. 用[CApplication::init()]初始化应用程序。
+	   - 读取静态应用组件;
+
+   5. 触发[onBeginRequest|CApplication::onBeginRequest]事件;
+
+   6. 处理用户请求：
+	   - 解析用户请求；
+	   - 创建控制器；
+	   - 执行控制器；
+
+   7.触发[onEndRequest|CApplication::onEndRequest]事件;
+
+<div class="revision">$Id: basics.application.txt 626 2009-02-04 20:51:13Z qiang.xue  后部分译：sharehua$</div>

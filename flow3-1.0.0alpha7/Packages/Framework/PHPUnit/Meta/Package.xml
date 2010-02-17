@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<package xmlns="http://typo3.org/ns/2008/flow3/package">
+    <key>PHPUnit</key>
+    <title>The PHPUnit unit testing framework</title>
+    <description>Basically packages the PHPUnit as developed by Sebastian Bergmann into a package for FLOW3. Includes vfsStream as well.</description>
+    <version>3.4.0_1</version>
+    <categories/>
+    <parties>
+        <person role="LeadDeveloper">
+            <name>Sebastian Bergmann</name>
+            <website>http://www.phpunit.de/</website>
+        </person>
+        <person role="Maintainer">
+            <name>Karsten Dambekalns</name>
+            <email>karsten@typo3.org</email>
+            <website></website>
+            <organisation>TYPO3 Association</organisation>
+            <repositoryUserName></repositoryUserName>
+        </person>
+    </parties>
+    <constraints>
+        <depends/>
+        <conflicts/>
+        <suggests/>
+    </constraints>
+</package>

@@ -1,0 +1,70 @@
+Создание портлета облака тегов
+==============================
+
+[Облако тегов](http://ru.wikipedia.org/wiki/Облако_тегов) отображает список
+тегов записей с визуальным оформлением, показывающим популярность каждого тега.
+
+
+Создание класса `TagCloud`
+-------------------------
+
+Мы создаем класс `TagCloud` в файле `/wwwroot/blog/protected/components/TagCloud.php`.
+Содержимое файла:
+
+~~~
+[php]
+<?php
+class TagCloud extends Portlet
+{
+	public $title='Tags';
+
+	public function getTagWeights()
+	{
+		return Tag::model()->findTagWeights();
+	}
+
+	protected function renderContent()
+	{
+		$this->render('tagCloud');
+	}
+}
+~~~
+
+В коде выше мы вызываем метод `findTagWeights`, который определен в классе
+`Tag`. Метод возвращает список тегов с их относительным весом. Если тег
+связан с большим количеством записей, он получает более высокий вес. Мы будем
+использовать вес для управления отображением тегов.
+
+
+Создание представления `tagCloud`
+--------------------------------
+
+Представление `tagCloud` сохранено в файле `/wwwroot/blog/protected/components/views/tagCloud.php`.
+Для каждого тега, возвращенного методом `TagCloud::getTagWeights()`,
+представление отображает гиперссылку, которая ведет к странице записей,
+относящихся к данному тегу. Размер шрифта ссылки определен согласно значению
+вес тега. Чем выше вес, тем больше размер шрифта.
+
+
+Использование портлета `TagCloud`
+--------------------------------
+
+Использовать портлет `TagCloud` очень просто. Мы изменяем файл макета
+`/wwwroot/blog/protected/views/layouts/main.php` следующим образом,
+
+~~~
+[php]
+…
+<div id="sidebar">
+
+<?php $this->widget('UserLogin',array('visible'=>Yii::app()->user->isGuest)); ?>
+
+<?php $this->widget('UserMenu',array('visible'=>!Yii::app()->user->isGuest)); ?>
+
+<?php $this->widget('TagCloud'); ?>
+
+</div>
+…
+~~~
+
+<div class="revision">$Id: portlet.tags.txt 677 2009-02-14 04:27:48Z qiang.xue $</div>

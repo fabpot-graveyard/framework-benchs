@@ -1,0 +1,115 @@
+Buforowanie danych (ang. Data Caching)
+============
+
+Buforowanie danych dotyczy przechowywania pewnych zmiennych PHP w buforze oraz 
+przywracania ich później z buforu. Z tego powodu, podstawowa klasa komponentu buforowania 
+[CCache] dostarcza dwóch metod, które są używane przez większość czasu: [set()|CCache::set]
+oraz [get()|CCache::get].
+
+Aby zachować zmienną `$value` w buforze, wybieramy unikalne ID oraz wywołujemy 
+[set()|CCache::set] aby ją zachować:
+
+~~~
+[php]
+Yii::app()->cache->set($id, $value);
+~~~
+
+Zbuforowane dane pozostaną w buforze na zawsze, dopóki nie zostaną z niego usunięte
+ze względu na pewne zachowanie buforowania (np. przestrzeń bufora jest pełna i stare dane 
+są usuwane). Aby zmienić to zachowanie, możemy podać parametr wygasania podczas wywoływania 
+[set()|CCache::set] co spowoduje, że dane zostaną usunięte z bufora po upływie 
+określonego okresu czasu:
+
+~~~
+[php]
+// trzymaj wartość w buforze najdłużej przez 30 sekund
+Yii::app()->cache->set($id, $value, 30);
+~~~
+
+Następnie, jeśli potrzebujemy uzyskać dostęp do tej zmiennej (albo w tym samym lub też innym żądaniu) 
+wywołujemy [get()|CCache::get] wraz z ID aby zwrócić ją z bufora. Jeśli wartość 
+zwracana to false, oznacza to, że wartość nie jest dostępna w buforze i powinniśmy ją 
+wygenerować.
+
+~~~
+[php]
+$value=Yii::app()->cache->get($id);
+if($value===false)
+{
+  // odnów $value ponieważ nie została znaleziona w buforze
+	// i zachowaj ja w nim do ponownego użycia 
+	// Yii::app()->cache->set($id,$value);
+}
+~~~
+
+Podczas wybierania ID dla zmiennej, która będzie buforowana, upewnij się, że ID jest 
+unikalne spośród wszystkich innych zmiennych, które mogą być zbuforowane w aplikacji.
+NIE WYMAGA się, aby ID było unikalne pomiędzy aplikacjami, ponieważ komponent cache
+jest wystarczająco zmyślny aby rozróżniać te same ID w różnych aplikacjach.
+
+
+Część systemów buforowania pamięci, takich jak MemCache, APC, wspierają pobieranie 
+wartości wielokrotnie zbuforowanych w trybie wsadowym, co może objawić się zredukowaniem
+obciążenia związanego z pobieraniem zbuforowanych danych. Poczynając od wersji 1.0.8 
+nowa metoda [mget()|CCache::mget] została dostarczona w celu wykorzystania tej właściwości. 
+W przypadku kiedy używany system buforowania nie wspiera tej funkcjonalności 
+metoda [mget()|CCache::mget] zasymuluje ją.
+
+Aby usunąć zbuforowaną wartość z bufora wywołujemy metodę [delete()|CCache::delete];
+aby usunąć całą wartość z bufora wołamy [flush()|CCache::flush]. Bądź bardzo ostrożny
+podczas wywoływania [flush()|CCache::flush] ponieważ usuwa ono dane, które zostały 
+zbuforowane dla innych aplikacji.
+
+> Tip|Wskazówka: Ponieważ [CCache] implementuje dostęp przez tablice `ArrayAccess`
+> komponent cache może być używany jak tablica. Poniżej znajduje się kilka przykładów:
+> ~~~
+> [php]
+> $cache=Yii::app()->cache;
+> $cache['var1']=$value1;  // równoznaczne z: $cache->set('var1',$value1);
+> $value2=$cache['var2'];  // równoznaczne z: $value2=$cache->get('var2');
+> ~~~
+
+Zależności w buforowaniu (ang. Cache Dependency)
+----------------
+
+Poza opcją wygasania, dane zbuforowane  mogą również stracić ważność zgodnie
+z pewnymi zmianami zależności. Na przykład, jeśli buforujemy zawartość pewnego 
+pliku a plik ulegnie zmianie, powinniśmy unieważnić zbuforowaną kopię i przeczytać
+najnowszą zawartość z pliku zamiast tej z bufora.
+
+Reprezentujemy zależność jako instancję klasy [CCacheDependency] lub jej klas pochodnych.
+Przekazujemy instancję zależności wraz z danymi do buforowania gdy wywołujemy [set()|CCache::set].
+
+~~~
+[php]
+// wartość wygasa w ciągu 30 sekund
+// może ona również stracić ważność wcześniej jeśli zależny plik jest zmieniony
+Yii::app()->cache->set($id, $value, 30, new CFileCacheDependency('NazwaPliku'));
+~~~
+
+Teraz jeśli zwrócimy `$value` z buforu poprzez wywołanie [get()|CCache::get] zależność
+zostanie sprawdzona i jeśli zmieni się, zostanie zwrócona wartość false, ze wskazaniem
+danych, które wymagają odświeżenia.
+
+Poniżej znajduje się podsumowanie dostępnych zależności buforowania:
+
+   - [CFileCacheDependency]: zależność jest zmieniona jeśli jeśli zmienił się czas
+   ostatniej modyfikacji pliku.
+
+   - [CDirectoryCacheDependency]: zależność jest zmieniona jeśli jakikolwiek z plików
+   w katalogu lub podkatalogach zmienił się.
+
+   - [CDbCacheDependency]: zależność jest zmieniona jeśli wynik zapytania określonego 
+   zapytania SQL zmienił się.
+
+   - [CGlobalStateCacheDependency]: zależność jest zmieniona jeśli wartość określonego 
+   globalnego stanu została zmieniona. Globalny stan to zmienna, która jest trwała 
+   w aplikacji dla wielu żądań oraz wielu sesji. Jest zdefiniowana poprzez [CApplication::setGlobalState()].
+
+   - [CChainedCacheDependency]: zależność jest zmieniona jeśli jakakolwiek z zależności 
+   w łańcuchu zmieniła się.
+
+   - [CExpressionDependency]: zależność jest zmieniona jeśli zmieni się rezultat określonego wyrażenia PHP. Klasa ta jest dostępna od
+   wersji 1.0.4.
+
+<div class="revision">$Id: caching.data.txt 1295 2009-08-06 20:00:34Z qiang.xue $</div>

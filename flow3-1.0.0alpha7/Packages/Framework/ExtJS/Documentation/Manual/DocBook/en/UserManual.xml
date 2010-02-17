@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="fluid.usermanual"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:ns="http://docbook.org/ns/docbook"
+         xmlns:mathml="http://www.w3.org/1998/Math/MathML">
+  <title>User Manual</title>
+
+  <section>
+    <title>ExtJS extras</title>
+
+    <section>
+      <title>The ExtJS ux classes</title>
+
+      <para>One thing that is missing from ExtJS 3.x is the
+      <classname>StatusBar</classname> component. It is not missing
+      completely, though but has been made a ux class, i.e.
+      <classname>Ext.ux.StatusBar</classname> instead of
+      <classname>Ext.StatusBar</classname>. Since the ux folder of the ExtJS
+      3.x distribution contains a whole bouquet of useful extensions, it comes
+      with the package.</para>
+    </section>
+
+    <section>
+      <title>The extra theme</title>
+
+      <para>Since ExtJS 3.0.0 no longer comes with the gray and vista themes,
+      but the blue one looks just to, well, blue, we decided to package a 3.x
+      compatible gray theme, named "gray-extend". It is the work of
+      <personname>José Alfonso Dacosta and has been released under the GNU GPL
+      v3.</personname></para>
+    </section>
+  </section>
+
+  <xi:include href="ViewHelperLibrary.xml"/>
+</chapter>

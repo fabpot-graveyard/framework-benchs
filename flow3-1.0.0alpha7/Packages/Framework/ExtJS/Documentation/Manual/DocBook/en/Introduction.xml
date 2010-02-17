@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="fluid.introduction"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:ns="http://docbook.org/ns/docbook"
+         xmlns:mathml="http://www.w3.org/1998/Math/MathML">
+  <title>Introduction</title>
+
+  <para>The ExtJS package basicall packages ExtJS, so you should use the
+  official ExtJS documentation for information on the use of ExtJS
+  itself.</para>
+
+  <para>This manual explain what is in the package that is not explained
+  there.</para>
+</chapter>

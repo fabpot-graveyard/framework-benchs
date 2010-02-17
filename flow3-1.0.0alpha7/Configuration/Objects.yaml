@@ -1,0 +1,15 @@
+#                                                                        #
+# Additional object configuration                                     #
+#                                                                        #
+# This file contains additions to the object configuration. It is     #
+# loaded at the object initialization stage during the FLOW3 initiali-#
+# zation sequence. Just add your own modifications as necessary.         #
+#                                                                        #
+# Please refer to the FLOW3 manual for possible configuration options.   #
+#                                                                        #
+
+F3\FLOW3\Session\SessionInterface:
+  className: F3\FLOW3\Session\TransientSession
+
+F3\FLOW3\Log\SystemLoggerInterface:
+  className: F3\FLOW3\Log\Backend\NullBackend

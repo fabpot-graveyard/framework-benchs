@@ -1,0 +1,14 @@
+diff --git a/app/config/routes.php b/app/config/routes.php
+index 6caa739..6aeb49c 100644
+--- a/app/config/routes.php
++++ b/app/config/routes.php
+@@ -19,7 +19,8 @@ use \lithium\net\http\Router;
+  * its action called 'view', and we pass a param to select the view file
+  * to use (in this case, /app/views/pages/home.html.php)...
+  */
+-Router::connect('/', array('controller' => 'pages', 'action' => 'view', 'home'));
++//Router::connect('/', array('controller' => 'hello_world', 'action' => 'index'));
++Router::connect('/hello/{:name}', array('controller' => 'hello_world', 'action' => 'index'));
+ 
+ /**
+  * ...and connect the rest of 'Pages' controller's urls.

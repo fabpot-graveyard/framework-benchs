@@ -1,0 +1,10 @@
+#                                                                        #
+# Package configuration of the PHPUnit package                           #
+#                                                                        #
+
+# @package PHPUnit
+# @version $Id:PackageConfiguration.php 178 2007-03-09 10:30:04Z robert $
+
+classLoader:
+  includePaths:
+    PHPUnit: %PATH_PACKAGE_RESOURCES%PHP

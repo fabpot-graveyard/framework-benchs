@@ -1,0 +1,313 @@
+2010/02/02 19:14:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "helloa/Fabien".' in /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php:324
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('helloa/Fabien')
+#1 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#2 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/yii/hello/index.php/helloa/Fabien
+2010/02/02 19:14:58 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:131
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/views/site/index.php(1): CComponent->__get('name')
+#1 /Users/fabien/work/tmp/yii/framework/web/CBaseController.php(119): require('/Users/fabien/w...')
+#2 /Users/fabien/work/tmp/yii/framework/web/CBaseController.php(88): CBaseController->renderInternal('/Users/fabien/w...', Array, true)
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(735): CBaseController->renderFile('/Users/fabien/w...', Array, true)
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(674): CController->renderPartial('index', Array, true)
+#5 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CController->render('index', Array)
+#6 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#7 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#8 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#9 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#11 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#12 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#13 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#14 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:15:57 [error] [exception.CException] exception 'CException' with message 'Property "CHttpRequest.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:131
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CComponent->__get('name')
+#1 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#2 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#6 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#7 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#8 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:18:49 [error] [php] Undefined index: g (/Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php:32)
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): SiteController->runAction()
+#1 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): SiteController->runActionWithFilters()
+#2 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): SiteController->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController()
+#4 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#5 /Users/fabien/work/tmp/yii/hello/index.php(12): CWebApplication->run()
+REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:20:46 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CComponent->__set('name', 'Fabien')
+#1 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#2 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#6 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#7 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#8 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:20:56 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CComponent->__set('name', 'Fabien')
+#1 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#2 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#6 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#7 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#8 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:20:57 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CComponent->__set('name', 'Fabien')
+#1 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#2 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#6 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#7 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#8 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:20:58 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CComponent->__set('name', 'Fabien')
+#1 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#2 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#6 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#7 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#8 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:20:58 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CComponent->__set('name', 'Fabien')
+#1 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#2 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#6 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#7 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#8 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:20:58 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CComponent->__set('name', 'Fabien')
+#1 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#2 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#6 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#7 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#8 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:20:58 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CComponent->__set('name', 'Fabien')
+#1 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#2 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#6 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#7 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#8 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:20:58 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CComponent->__set('name', 'Fabien')
+#1 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#2 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#6 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#7 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#8 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:20:59 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CComponent->__set('name', 'Fabien')
+#1 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#2 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#6 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#7 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#8 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:20:59 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CComponent->__set('name', 'Fabien')
+#1 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#2 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#6 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#7 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#8 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/02 19:21:03 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.name" is not defined.' in /Users/fabien/work/tmp/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Users/fabien/work/tmp/yii/hello/protected/controllers/SiteController.php(32): CComponent->__set('name', 'Fabien')
+#1 /Users/fabien/work/tmp/yii/framework/web/actions/CInlineAction.php(32): SiteController->actionIndex()
+#2 /Users/fabien/work/tmp/yii/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/fabien/work/tmp/yii/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#4 /Users/fabien/work/tmp/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(320): CController->run('index')
+#6 /Users/fabien/work/tmp/yii/framework/web/CWebApplication.php(120): CWebApplication->runController('site/index')
+#7 /Users/fabien/work/tmp/yii/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#8 /Users/fabien/work/tmp/yii/hello/index.php(12): CApplication->run()
+#9 {main} REQUEST_URI=/yii/hello/index.php/hello/Fabien
+2010/02/09 21:38:19 [error] [php] Undefined index: name (/Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/controllers/SiteController.php:32)
+Stack trace:
+#0 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(278): SiteController->runAction()
+#1 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(257): SiteController->runActionWithFilters()
+#2 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(320): SiteController->run()
+#3 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(120): CWebApplication->runController()
+#4 /Users/fabien/work/sflive2010/yii-1.1.1/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#5 /Users/fabien/work/sflive2010/yii-1.1.1/hello/index.php(12): CWebApplication->run()
+REQUEST_URI=/sflive2010/yii-1.1.1/hello/index.php
+2010/02/09 21:40:01 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "products".' in /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php:744
+Stack trace:
+#0 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(674): CController->renderPartial('products', Array, true)
+#1 /Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/controllers/SiteController.php(38): CController->render('products', Array)
+#2 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/actions/CInlineAction.php(32): SiteController->actionProducts()
+#3 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(300): CInlineAction->run()
+#4 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#5 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(320): CController->run('products')
+#7 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(120): CWebApplication->runController('site/products')
+#8 /Users/fabien/work/sflive2010/yii-1.1.1/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#9 /Users/fabien/work/sflive2010/yii-1.1.1/hello/index.php(12): CApplication->run()
+#10 {main} REQUEST_URI=/sflive2010/yii-1.1.1/hello/index.php/products
+2010/02/09 21:41:56 [error] [php] Undefined variable: view (/Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/views/site/products.php:1)
+Stack trace:
+#0 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(735): SiteController->renderFile()
+#1 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(674): SiteController->renderPartial()
+#2 /Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/controllers/SiteController.php(53): SiteController->render()
+#3 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/actions/CInlineAction.php(32): SiteController->actionProducts()
+#4 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(278): SiteController->runAction()
+#6 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(257): SiteController->runActionWithFilters()
+#7 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(320): SiteController->run()
+#8 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(120): CWebApplication->runController()
+#9 /Users/fabien/work/sflive2010/yii-1.1.1/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#10 /Users/fabien/work/sflive2010/yii-1.1.1/hello/index.php(12): CWebApplication->run()
+REQUEST_URI=/sflive2010/yii-1.1.1/hello/index.php/products
+2010/02/09 21:43:04 [error] [php] Undefined variable: view (/Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/views/site/products.php:1)
+Stack trace:
+#0 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(735): SiteController->renderFile()
+#1 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(674): SiteController->renderPartial()
+#2 /Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/controllers/SiteController.php(53): SiteController->render()
+#3 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/actions/CInlineAction.php(32): SiteController->actionProducts()
+#4 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(278): SiteController->runAction()
+#6 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(257): SiteController->runActionWithFilters()
+#7 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(320): SiteController->run()
+#8 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(120): CWebApplication->runController()
+#9 /Users/fabien/work/sflive2010/yii-1.1.1/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#10 /Users/fabien/work/sflive2010/yii-1.1.1/hello/index.php(12): CWebApplication->run()
+REQUEST_URI=/sflive2010/yii-1.1.1/hello/index.php/products
+2010/02/09 21:43:27 [error] [php] Undefined variable: view (/Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/views/site/products.php:1)
+Stack trace:
+#0 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(735): SiteController->renderFile()
+#1 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(674): SiteController->renderPartial()
+#2 /Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/controllers/SiteController.php(53): SiteController->render()
+#3 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/actions/CInlineAction.php(32): SiteController->actionProducts()
+#4 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(278): SiteController->runAction()
+#6 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(257): SiteController->runActionWithFilters()
+#7 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(320): SiteController->run()
+#8 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(120): CWebApplication->runController()
+#9 /Users/fabien/work/sflive2010/yii-1.1.1/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#10 /Users/fabien/work/sflive2010/yii-1.1.1/hello/index.php(12): CWebApplication->run()
+REQUEST_URI=/sflive2010/yii-1.1.1/hello/index.php/products
+2010/02/09 21:44:10 [error] [php] Undefined variable: view (/Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/views/site/products.php:1)
+Stack trace:
+#0 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(735): SiteController->renderFile()
+#1 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(674): SiteController->renderPartial()
+#2 /Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/controllers/SiteController.php(54): SiteController->render()
+#3 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/actions/CInlineAction.php(32): SiteController->actionProducts()
+#4 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(278): SiteController->runAction()
+#6 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(257): SiteController->runActionWithFilters()
+#7 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(320): SiteController->run()
+#8 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(120): CWebApplication->runController()
+#9 /Users/fabien/work/sflive2010/yii-1.1.1/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#10 /Users/fabien/work/sflive2010/yii-1.1.1/hello/index.php(12): CWebApplication->run()
+REQUEST_URI=/sflive2010/yii-1.1.1/hello/index.php/products
+2010/02/09 21:44:20 [error] [php] Undefined variable: view (/Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/views/site/products.php:4)
+Stack trace:
+#0 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(735): SiteController->renderFile()
+#1 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(674): SiteController->renderPartial()
+#2 /Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/controllers/SiteController.php(54): SiteController->render()
+#3 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/actions/CInlineAction.php(32): SiteController->actionProducts()
+#4 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(278): SiteController->runAction()
+#6 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(257): SiteController->runActionWithFilters()
+#7 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(320): SiteController->run()
+#8 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(120): CWebApplication->runController()
+#9 /Users/fabien/work/sflive2010/yii-1.1.1/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#10 /Users/fabien/work/sflive2010/yii-1.1.1/hello/index.php(12): CWebApplication->run()
+REQUEST_URI=/sflive2010/yii-1.1.1/hello/index.php/products
+2010/02/09 21:44:22 [error] [php] Undefined variable: view (/Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/views/site/products.php:4)
+Stack trace:
+#0 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(735): SiteController->renderFile()
+#1 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(674): SiteController->renderPartial()
+#2 /Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/controllers/SiteController.php(54): SiteController->render()
+#3 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/actions/CInlineAction.php(32): SiteController->actionProducts()
+#4 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(278): SiteController->runAction()
+#6 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(257): SiteController->runActionWithFilters()
+#7 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(320): SiteController->run()
+#8 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(120): CWebApplication->runController()
+#9 /Users/fabien/work/sflive2010/yii-1.1.1/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#10 /Users/fabien/work/sflive2010/yii-1.1.1/hello/index.php(12): CWebApplication->run()
+REQUEST_URI=/sflive2010/yii-1.1.1/hello/index.php/products
+2010/02/09 21:47:38 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "HelloBundle:Hello:_product".' in /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php:744
+Stack trace:
+#0 /Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/views/site/products.php(4): CController->renderPartial('HelloBundle:Hel...', Array)
+#1 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CBaseController.php(119): require('/Users/fabien/w...')
+#2 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CBaseController.php(88): CBaseController->renderInternal('/Users/fabien/w...', Array, true)
+#3 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(735): CBaseController->renderFile('/Users/fabien/w...', Array, true)
+#4 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(674): CController->renderPartial('products', Array, true)
+#5 /Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/controllers/SiteController.php(54): CController->render('products', Array)
+#6 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/actions/CInlineAction.php(32): SiteController->actionProducts()
+#7 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(300): CInlineAction->run()
+#8 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#9 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(320): CController->run('products')
+#11 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(120): CWebApplication->runController('site/products')
+#12 /Users/fabien/work/sflive2010/yii-1.1.1/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#13 /Users/fabien/work/sflive2010/yii-1.1.1/hello/index.php(12): CApplication->run()
+#14 {main} REQUEST_URI=/sflive2010/yii-1.1.1/hello/index.php/products
+2010/02/09 21:47:53 [error] [php] Undefined variable: view (/Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/views/site/products.php:10)
+Stack trace:
+#0 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(735): SiteController->renderFile()
+#1 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(674): SiteController->renderPartial()
+#2 /Users/fabien/work/sflive2010/yii-1.1.1/hello/protected/controllers/SiteController.php(54): SiteController->render()
+#3 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/actions/CInlineAction.php(32): SiteController->actionProducts()
+#4 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(278): SiteController->runAction()
+#6 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CController.php(257): SiteController->runActionWithFilters()
+#7 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(320): SiteController->run()
+#8 /Users/fabien/work/sflive2010/yii-1.1.1/framework/web/CWebApplication.php(120): CWebApplication->runController()
+#9 /Users/fabien/work/sflive2010/yii-1.1.1/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#10 /Users/fabien/work/sflive2010/yii-1.1.1/hello/index.php(12): CWebApplication->run()
+REQUEST_URI=/sflive2010/yii-1.1.1/hello/index.php/products

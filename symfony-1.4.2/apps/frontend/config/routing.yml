@@ -1,0 +1,83 @@
+hello:
+  url:   /hello/:name
+  param: { module: hello, action: index }
+
+products:
+  url:   /products
+  param: { module: hello, action: products }
+
+product:
+  url:   /product/:id
+  param: { module: hello, action: product }
+
+route_1:
+  url:   /route_1/:slug
+  param: { module: hello, action: route }
+
+route_2:
+  url:   /route_2/:slug
+  param: { module: hello, action: route }
+
+#
+route_3:
+  url:   /route_3/:slug
+  param: { module: hello, action: route }
+
+#
+route_4:
+  url:   /route_4/:slug
+  param: { module: hello, action: route }
+
+route_5:
+  url:   /route_5/:slug
+  param: { module: hello, action: route }
+
+#
+route_6:
+  url:   /route_6/:slug
+  param: { module: hello, action: route }
+
+#
+route_7:
+  url:   /route_7/:slug
+  param: { module: hello, action: route }
+
+#
+route_8:
+  url:   /route_8/:slug
+  param: { module: hello, action: route }
+
+#
+route_9:
+  url:   /route_9/:slug
+  param: { module: hello, action: route }
+
+#
+route_10:
+  url:   /route_10/:slug
+  param: { module: hello, action: route }
+
+#
+route_11:
+  url:   /route_11/:slug
+  param: { module: hello, action: route }
+
+#
+route_12:
+  url:   /route_12/:slug
+  param: { module: hello, action: route }
+
+#
+route_13:
+  url:   /route_13/:slug
+  param: { module: hello, action: route }
+
+#
+route_14:
+  url:   /route_14/:slug
+  param: { module: hello, action: route }
+
+#
+route_15:
+  url:   /route_15/:slug
+  param: { module: hello, action: route }

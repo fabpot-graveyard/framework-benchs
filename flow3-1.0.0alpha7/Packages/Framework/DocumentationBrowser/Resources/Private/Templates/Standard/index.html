@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:f="urn:flow3:fluid">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Documentation Browser</title>
+<f:base />
+<link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'css/styles.css')}" />
+<script type="text/javascript">
+function applyStylesheet() {
+var ss = document.createElement("link");
+	ss.type = "text/css";
+	ss.rel = "stylesheet";
+	ss.href = "{f:uri.resource(path: 'css/docbook-styles.css')}";
+
+	var iframe;
+	if (document.frames) {
+		iframe = document.frames["frame"];
+	} else {
+		iframe = window.frames["frame"];
+	}
+	if (iframe) {
+		if (document.all) {
+			iframe.document.createStyleSheet(ss.href);
+		} else {
+			iframe.document.getElementsByTagName("head")[0].appendChild(ss);
+		}
+	}
+}
+</script>
+</head>
+<body>
+
+<div id="application-bar">
+<div class="logo">FLOW3</div> <span class="title">Documentation</span>
+</div>
+
+<div id="documentation-selector">
+<ul class="packages">
+<f:for each="{renderedDocumentationByPackage}" as="renderedDocumentations" key="packageKey">
+	<!-- If current package key in for-loop equals selected package key, add a class -->
+	<li class="package{f:if(condition: '{packageKey} == {selectedPackageKey}', then: ' package-selected')}">
+		<h3 class="package-name">{packageKey}</h3>
+		<ul class="documentations">
+		<f:for each="{renderedDocumentations.documentations}" as="documentation">
+			<li>
+				<h4 class="package-documentation"><f:link.action action="index" arguments="{packageKey: packageKey, documentationName: documentation.documentationName, language: 'en'}">{documentation.documentationName}</f:link.action></h4>
+				<f:if condition="{packageKey} == {selectedPackageKey}">
+				<ul class="languages">
+				<f:for each="{documentation.documentationFormats.HTML.availableLanguages}" as="language">
+					<!-- If current language in for-loop equals selected language, add a class -->
+					<li class="language{f:if(condition: '{language} == {selectedLanguage}', then: ' language-selected')}">
+						<f:link.action action="index" arguments="{packageKey: packageKey, documentationName: documentation.documentationName, language: language}">{language}</f:link.action>
+					</li>
+				</f:for>
+				</ul>
+				</f:if>
+			</li>
+		</f:for>
+		</ul>
+		<div class="bottom"></div>
+	</li>
+</f:for>
+</ul>
+</div>
+
+<f:if condition="{showDocumentation}">
+<div id="documentation-view">
+<iframe name="frame" src="{viewDocumentationUri}" onload="applyStylesheet()">
+If your browser doesn't support iframes, please open the documentation to <a href="{viewDocumentationUri}">{selectedPackageKey} / {selectedDocumentationName}</a> manually.
+</iframe>
+</div>
+</f:if>
+
+</body>
+</html>

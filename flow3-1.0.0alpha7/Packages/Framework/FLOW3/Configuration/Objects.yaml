@@ -1,0 +1,433 @@
+#                                                                          #
+# Object Configuration for the FLOW3 Framework                             #
+#                                                                          #
+# This file contains the default object configuration for the FLOW3        #
+# Framework. Because it is loaded at a very early stage during ini-        #
+# tialization, this configuration cannot be overriden by other con-        #
+# figuration files.                                                        #
+#                                                                          #
+
+# @package FLOW3
+# @version $Id: Objects.yaml 3769 2010-01-27 17:32:20Z k-fish $
+
+#                                                                          #
+# AOP                                                                      #
+#                                                                          #
+
+F3\FLOW3\AOP\Framework:
+  autowiring: off
+  properties:
+    reflectionService:
+      object: F3\FLOW3\Reflection\ReflectionService
+    pointcutExpressionParser:
+      object: F3\FLOW3\AOP\Pointcut\PointcutExpressionParser
+    proxyClassesCache:
+      object:
+        factoryClassName: F3\FLOW3\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: FLOW3_AOP_ProxyClasses
+    targetClassInformationCache:
+      object:
+        factoryClassName: F3\FLOW3\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: FLOW3_AOP_TargetClassInformation
+    proxyBuildInformationCache:
+      object:
+        factoryClassName: F3\FLOW3\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: FLOW3_AOP_ProxyBuildInformation
+    configurationManager:
+      object: F3\FLOW3\Configuration\ConfigurationManager
+    proxyClassBuilder:
+      object: F3\FLOW3\AOP\Builder\ProxyClassBuilder
+    systemLogger:
+      object: F3\FLOW3\Log\SystemLoggerInterface
+F3\FLOW3\AOP\Builder\AdvicedConstructorInterceptorBuilder: []
+F3\FLOW3\AOP\Builder\AdvicedMethodInterceptorBuilder: []
+F3\FLOW3\AOP\Advisor:
+  scope: prototype
+F3\FLOW3\AOP\Advice\AfterReturningAdvice:
+  scope: prototype
+F3\FLOW3\AOP\Advice\AfterThrowingAdvice:
+  scope: prototype
+F3\FLOW3\AOP\Advice\AfterAdvice:
+  scope: prototype
+F3\FLOW3\AOP\Advice\AroundAdvice:
+  scope: prototype
+F3\FLOW3\AOP\Advice\BeforeAdvice:
+  scope: prototype
+F3\FLOW3\AOP\Builder\EmptyConstructorInterceptorBuilder: []
+F3\FLOW3\AOP\Builder\EmptyMethodInterceptorBuilder: []
+F3\FLOW3\AOP\Introduction:
+  scope: prototype
+F3\FLOW3\AOP\Builder\ProxyClassBuilder: []
+F3\FLOW3\AOP\Pointcut\Pointcut:
+  className: F3\FLOW3\AOP\Pointcut\Pointcut
+  scope: prototype
+F3\FLOW3\AOP\Pointcut\PointcutClassNameFilter:
+  scope: prototype
+F3\FLOW3\AOP\Pointcut\PointcutClassTaggedWithFilter:
+  scope: prototype
+F3\FLOW3\AOP\Pointcut\PointcutClassTypeFilter:
+  scope: prototype
+F3\FLOW3\AOP\Pointcut\PointcutExpressionParser: []
+F3\FLOW3\AOP\Pointcut\PointcutFilter:
+  scope: prototype
+F3\FLOW3\AOP\Pointcut\PointcutFilterComposite:
+  scope: prototype
+F3\FLOW3\AOP\Pointcut\PointcutMethodNameFilter:
+  scope: prototype
+F3\FLOW3\AOP\Pointcut\PointcutMethodTaggedWithFilter:
+  scope: prototype
+F3\FLOW3\AOP\Pointcut\PointcutSettingFilter:
+  scope: prototype
+
+#                                                                          #
+# Cache                                                                    #
+#                                                                          #
+
+F3\FLOW3\Cache\CacheManager:
+  autowiring: off
+  properties: 
+    cacheFactory:
+      object: F3\FLOW3\Cache\CacheFactory
+    systemLogger:
+      object: F3\FLOW3\Log\SystemLoggerInterface
+F3\FLOW3\Cache\CacheFactory:
+  autowiring: off
+  arguments:
+    1:
+      object: F3\FLOW3\Object\ObjectManagerInterface
+    2:
+      object: F3\FLOW3\Object\ObjectFactoryInterface
+F3\FLOW3\Cache\Backend\FileBackend:
+  autowiring: off
+  scope: prototype
+  properties:
+    environment:
+      object: F3\FLOW3\Utility\Environment
+    signalDispatcher:
+      object: F3\FLOW3\SignalSlot\Dispatcher
+    systemLogger:
+      object: F3\FLOW3\Log\SystemLoggerInterface
+F3\FLOW3\Cache\Backend\MemcachedBackend:
+  autowiring: off
+  scope: prototype
+  properties:
+    environment:
+      object: F3\FLOW3\Utility\Environment
+    signalDispatcher:
+      object: F3\FLOW3\SignalSlot\Dispatcher
+    systemLogger:
+      object: F3\FLOW3\Log\SystemLoggerInterface
+F3\FLOW3\Cache\Backend\ApcBackend:
+  autowiring: off
+  scope: prototype
+  properties:
+    environment:
+      object: F3\FLOW3\Utility\Environment
+    signalDispatcher:
+      object: F3\FLOW3\SignalSlot\Dispatcher
+    systemLogger:
+      object: F3\FLOW3\Log\SystemLoggerInterface
+F3\FLOW3\Cache\Backend\PdoBackend:
+  autowiring: off
+  scope: prototype
+  properties:
+    objectFactory:
+      object: F3\FLOW3\Object\ObjectFactoryInterface
+    environment:
+      object: F3\FLOW3\Utility\Environment
+    signalDispatcher:
+      object: F3\FLOW3\SignalSlot\Dispatcher
+    systemLogger:
+      object: F3\FLOW3\Log\SystemLoggerInterface
+F3\FLOW3\Cache\Backend\NullBackend:
+  autowiring: off
+  scope: prototype
+F3\FLOW3\Cache\Backend\TransientMemoryBackend:
+  autowiring: off
+  scope: prototype
+F3\FLOW3\Cache\Frontend\VariableFrontend:
+  autowiring: off
+  scope: prototype
+F3\FLOW3\Cache\Frontend\StringFrontend:
+  autowiring: off
+  scope: prototype
+F3\FLOW3\Cache\Frontend\PhpFrontend:
+  autowiring: off
+  scope: prototype
+F3\FLOW3\Cache\Controller\CacheManagerController:
+  properties:
+    cacheManager:
+      object: F3\FLOW3\Cache\CacheManager
+
+#                                                                          #
+# Configuration                                                            #
+#                                                                          #
+
+F3\FLOW3\Configuration\ConfigurationManager: []
+
+#                                                                          #
+# Core                                                                     #
+#                                                                          #
+
+F3\FLOW3\Core\LockManager:
+  properties:
+    environment:
+      object: F3\FLOW3\Utility\Environment
+    systemLogger:
+      object: F3\FLOW3\Log\SystemLoggerInterface
+
+#                                                                          #
+# Log                                                                      #
+#                                                                          #
+
+F3\FLOW3\Log\LoggerFactory: []
+F3\FLOW3\Log\Logger:
+  autowiring: off
+  scope: prototype
+F3\FLOW3\Log\Backend\FileBackend:
+  autowiring: off
+  scope: prototype
+F3\FLOW3\Log\Backend\NullBackend:
+  autowiring: off
+  scope: prototype
+F3\FLOW3\Log\SystemLoggerInterface:
+  autowiring: off
+  factoryClassName: F3\FLOW3\Log\LoggerFactory
+  className: F3\FLOW3\Log\Logger
+  arguments:
+    1:
+      value: FLOW3_System
+    2:
+      value: F3\FLOW3\Log\Logger
+    3:
+      setting: FLOW3.log.systemLogger.backend
+    4:
+      setting: FLOW3.log.systemLogger.backendOptions
+
+#                                                                          #
+# Monitor                                                                  #
+#                                                                          #
+
+F3\FLOW3\Monitor\ChangeDetectionStrategy\ModificationTimeStrategy:
+  autowiring: off
+  properties:
+    cache:
+      object:
+        factoryClassName: F3\FLOW3\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: FLOW3_Monitor
+
+F3\FLOW3\Monitor\FileMonitor:
+  scope: prototype
+  autowiring: off
+  properties:
+    changeDetectionStrategy:
+      object: FLOW3.monitor.fileMonitor.changeDetectionStrategy
+    signalDispatcher:
+      object: F3\FLOW3\SignalSlot\Dispatcher
+    systemLogger:
+      object: F3\FLOW3\Log\SystemLoggerInterface
+    cache:
+      object:
+        factoryClassName: F3\FLOW3\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: FLOW3_Monitor
+
+#                                                                          #
+# MVC                                                                      #
+#                                                                          #
+
+F3\FLOW3\MVC\Web\Routing\Aspect\RouterCachingAspect:
+  properties:
+    findMatchResultsCache:
+      object:
+        factoryClassName: F3\FLOW3\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: FLOW3_MVC_Web_Routing_FindMatchResults
+    resolveCache:
+      object:
+        factoryClassName: F3\FLOW3\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: FLOW3_MVC_Web_Routing_Resolve
+
+#                                                                          #
+# Object                                                                   #
+#                                                                          #
+
+F3\FLOW3\Object\ObjectSerializer:
+  properties:
+    objectManager:
+      object: F3\FLOW3\Object\ObjectManagerInterface
+    objectBuilder:
+      object: F3\FLOW3\Object\ObjectBuilder
+    queryFactory:
+      object: F3\FLOW3\Persistence\QueryFactoryInterface
+    persistenceManager:
+      object: F3\FLOW3\Persistence\PersistenceManagerInterface
+    reflectionService:
+      object: F3\FLOW3\Reflection\ReflectionService
+
+F3\FLOW3\Object\SessionRegistry:
+  properties:
+    objectSerializer:
+      object: F3\FLOW3\Object\ObjectSerializer
+
+#                                                                          #
+# Package                                                                  #
+#                                                                          #
+
+F3\FLOW3\Package\PackageManagerInterface:
+  autowiring: off
+  className: F3\FLOW3\Package\PackageManager
+  properties:
+    objectFactory:
+      object: F3\FLOW3\Object\ObjectFactoryInterface
+    packageMetaDataWriter:
+      object: F3\FLOW3\Package\MetaData\WriterInterface
+    configurationManager:
+      object: F3\FLOW3\Configuration\ConfigurationManager
+
+F3\FLOW3\Package\Controller\PackageManagerController: []
+
+F3\FLOW3\Package\MetaData:
+  scope: prototype
+
+F3\FLOW3\Package\Package:
+  autowiring: off
+  scope: prototype
+  properties:
+    objectFactory:
+      object: F3\FLOW3\Object\ObjectFactoryInterface
+    metaDataReader:
+      object: F3\FLOW3\Package\MetaData\ReaderInterface
+
+F3\FLOW3\Package\Documentation:
+  scope: prototype
+
+F3\FLOW3\Package\Documentation\Format:
+  scope: prototype
+
+F3\FLOW3\Package\MetaData\ReaderInterface:
+  className: F3\FLOW3\Package\MetaData\XmlReader
+
+F3\FLOW3\Package\MetaData\WriterInterface:
+  autowiring: off
+  className: F3\FLOW3\Package\MetaData\XmlWriter
+
+#                                                                          #
+# Persistence                                                              #
+#                                                                          #
+F3\FLOW3\Persistence\Backend\AbstractBackend:
+  properties:
+    signalDispatcher:
+      object: F3\FLOW3\SignalSlot\Dispatcher
+
+#                                                                          #
+# Reflection                                                               #
+#                                                                          #
+
+F3\FLOW3\Reflection\ReflectionService:
+  autowiring: off
+  properties:
+    settings:
+      setting: FLOW3
+
+#                                                                          #
+# Resource                                                                 #
+#                                                                          #
+
+F3\FLOW3\Resource\ClassLoader: []
+F3\FLOW3\Resource\Publishing\ResourcePublisher:
+  properties:
+    resourcePublishingTarget:
+      object: F3\FLOW3\Resource\Publishing\FileSystemPublishingTarget
+F3\FLOW3\Resource\Publishing\ResourcePublishingTargetInterface: []
+F3\FLOW3\Resource\Publishing\FileSystemPublishingTarget: []
+F3\FLOW3\Resource\ResourceManager:
+  properties:
+    statusCache:
+      object:
+        factoryClassName: F3\FLOW3\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: FLOW3_Resource_Status
+
+#                                                                          #
+# Security                                                                 #
+#                                                                          #
+
+F3\FLOW3\Security\ACL\PolicyService:
+  properties:
+    cache:
+      object:
+        factoryClassName: F3\FLOW3\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: FLOW3_Security_Policy
+
+F3\FLOW3\Security\Cryptography\RsaWalletServiceInterface:
+  className: F3\FLOW3\Security\Cryptography\RsaWalletServicePhp
+  properties:
+    keystoreCache:
+      object:
+        factoryClassName: F3\FLOW3\Cache\CacheManager
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: FLOW3_Security_Cryptography_RSAWallet
+
+#                                                                          #
+# Session                                                                  #
+#                                                                          #
+
+F3\FLOW3\Session\SessionInterface:
+  className: F3\FLOW3\Session\PhpSession
+
+#                                                                          #
+# SignalSlot                                                               #
+#                                                                          #
+
+F3\FLOW3\SignalSlot\Dispatcher:
+  autowiring: off
+  properties:
+    objectManager:
+      object: F3\FLOW3\Object\ObjectManagerInterface
+    systemLogger:
+      object: F3\FLOW3\Log\SystemLoggerInterface
+
+#                                                                          #
+# Utility                                                                  #
+#                                                                          #
+
+F3\FLOW3\Utility\Environment:
+  autowiring: off
+  properties:
+    temporaryDirectoryBase:
+      setting: FLOW3.utility.environment.temporaryDirectoryBase
+    systemLogger:
+      object: F3\FLOW3\Log\SystemLoggerInterface
+    context:
+      setting: FLOW3.core.context
+
+F3\FLOW3\Utility\PdoHelper:
+  autowiring: off
+  scope: prototype

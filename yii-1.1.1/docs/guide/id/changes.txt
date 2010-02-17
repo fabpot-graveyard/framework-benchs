@@ -1,0 +1,55 @@
+Fitur Baru
+==========
+
+Halaman ini meringkas fitur-fitur utama baru yang diperkenalkan dalam setiap rilis Yii.
+
+Versi 1.0.8
+-----------
+
+ * Ditambahkan dukungan untuk mengambil multipel nilai yang di-cache sekali waktu
+	 - [Cache Data](/doc/guide/caching.data)
+
+ * Diperkenalkan standar alias path root `ext` baru yang merujuk ke direktori
+yang berisi semua ekstensi pihak ketiga.
+	 - [Menggunakan Ekstensi](/doc/guide/extension.use)
+
+Versi 1.0.7
+-----------
+
+ * Ditambahkan dukungan untuk menampilkan informasi stack pemanggilan dalam pesan pelacakan
+     - [Informasi Konteks Pencatatan](/doc/guide/topics.logging#logging-context-information)
+
+ * Ditambahkan opsi `index` pada relasi AR agar obyek terkait bisa diindeks
+menggunakan nilai kolom tertentu
+     - [Opsi Queri Relasional](/doc/guide/database.arr#relational-query-options)
+
+Versi 1.0.6
+-------------
+
+ * Ditambahkan dukungan untuk pemakaian lingkup bernama dengan metode `update` dan `delete`:
+     - [Lingkup Bernama](/doc/guide/database.ar#named-scopes)
+
+ * Ditambahkan dukungan untuk pemakaian lingkup bernama dalam opsi `with` pada aturan relasional:
+     - [Queri Relasional dengan Lingkup Bernama](/doc/guide/database.arr#relational-query-with-named-scopes)
+
+ * Ditambahkan dukungan untuk pengukuran eksekusi SQL
+     - [Mengukur Eksekusi SQL](/doc/guide/topics.logging#profiling-sql-executions)
+
+ * Ditambahkan dukungan untuk kustomisasi aturan URL tunggal dengan menyetel opsi urlFormat dan caseSensitive:
+     - [URL Ramah-Pengguna](/doc/guide/topics.url#user-friendly-urls)
+
+Versi 1.0.5
+-------------
+
+ * Rekaman aktif ditingkatkan dengan mendukung lingkup penamaan. Lihat:
+     - [Lingkup Bernama](/doc/guide/database.ar#named-scopes)
+     - [Query Relasional dengan Lingkup Bernama](/doc/guide/database.arr#relational-query-with-named-scopes)
+
+
+ * Rekaman aktif ditingkatkan dengan mendukung pemanggilan lazy dengan opsi query dinamis. Lihat:
+     - [Opsi Query Relasional Dinamis](/doc/guide/database.arr#dynamic-relational-query-options)
+
+ * Peningkatan [CUrlManager] untuk mendukung parameterisasi bagian rute dalam aturan URL. Lihat:
+     - [Parameterisasi Rute dalam Aturan URL](/doc/guide/topics.url#parameterizing-routes)
+
+<div class="revision">$Id: changes.txt 1299 2009-08-07 00:25:55Z qiang.xue $</div>

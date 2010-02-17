@@ -1,0 +1,11 @@
+#                                                                          #
+# Object Configuration for the FLOW3 Framework                             #
+#                                                                          #
+# This file contains the default object configuration for the FLOW3        #
+# Framework. Because it is loaded at a very early stage during ini-        #
+# tialization, this configuration cannot be overriden by other con-        #
+# figuration files.                                                        #
+#                                                                          #
+
+F3\FLOW3\Session\SessionInterface:
+  className: F3\FLOW3\Session\TransientSession

@@ -1,0 +1,11 @@
+The Definitive Guide to Yii
+===========================
+
+This tutorial is released under [the Terms of Yii Documentation](http://www.yiiframework.com/doc/terms/).
+
+All Rights Reserved.
+
+2008-2010 &copy; Yii Software LLC.
+
+
+<div class="revision">$Id: index.txt 1679 2010-01-07 21:03:36Z qiang.xue $</div>

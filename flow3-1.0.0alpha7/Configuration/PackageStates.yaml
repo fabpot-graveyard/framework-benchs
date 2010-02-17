@@ -1,0 +1,29 @@
+#                                                                        #
+# Package States Configuration                                           #
+#                                                                        #
+# This file defines which packages are active and which are not.         #
+# Don't modify this file directly, rather use the package manager to     #
+# enable and disable packages.                                           #
+#                                                                        #
+# Please refer to the FLOW3 manual for possible configuration options.   #
+#                                                                        #
+
+---
+DocumentationBrowser: 
+  state: active
+ExtJS: 
+  state: active
+Fluid: 
+  state: active
+Kickstart: 
+  state: active
+Party: 
+  state: active
+PHPUnit: 
+  state: active
+Testing: 
+  state: active
+Welcome: 
+  state: active
+Hello: 
+  state: active

@@ -6,8 +6,9 @@ This document explains how to replicate the benchmarks easily on Amazon EC2.
 The Machine
 -----------
 
-The benchmarks are done on Amazon EC2. The AMI is "ami-80446ff4" (EU) and the
-instance type is "c1.xlarge" (High-CPU Extra Large Instance):
+The benchmarks are done on Amazon EC2. The AMI is "ami-80446ff4" (EU) or
+"ami-f0f61599" (US) and the instance type is "c1.xlarge" (High-CPU Extra Large
+Instance):
 
  * 7 GB of memory
  * 20 EC2 Compute Units (8 virtual cores with 2.5 EC2 Compute Units each)
